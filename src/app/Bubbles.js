@@ -209,7 +209,7 @@ const Bubbles = () => {
     };
 
     p.draw = () => {
-      p.background(255);
+      p.background('#F8F2DC');
 
       flowfield.update();
 
