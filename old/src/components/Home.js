@@ -1,6 +1,6 @@
 import React from 'react';
-import RSVPModal from './Modal';
-const SaveTheDate = function () {
+
+const Home = () => {
   return (
     <div>
       <div className="container flex items-center justify-center px-8">
@@ -38,4 +38,4 @@ const SaveTheDate = function () {
   );
 };
 
-export default SaveTheDate;
+export default Home;

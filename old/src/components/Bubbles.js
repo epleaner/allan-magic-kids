@@ -147,7 +147,7 @@ const Bubbles = () => {
             const theta = Math.random() * 2 * p.PI;
             let x = this.center.pos.x + (this.radius / 2) * p.cos(theta);
             let y = this.center.pos.y + (this.radius / 2) * p.sin(theta);
-            this.particles[this.particles.length] = new Particle(x, y, flowfield, true);
+            this.particles[this.particles.length] = new Particle(x, y, flowfield, true, true, 5, this.color);
           }
         }
       };
