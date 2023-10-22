@@ -208,7 +208,7 @@ const sketch = (p) => {
   };
 
   p.draw = () => {
-    p.background(255);
+    p.background('#F8F2DC');
 
     flowfield.update();
 
@@ -230,7 +230,7 @@ const sketch = (p) => {
 
   const createNewFlower = () => {
     const color = colors[Math.floor(Math.random() * colors.length)];
-    console.log(color);
+
     flowers[flowers.length] = new Flower(
       initialX,
       p.map(Math.random(), 0, 1, p.height / 4, p.height),
@@ -240,7 +240,7 @@ const sketch = (p) => {
   };
 
   p.mouseClicked = () => {
-    createNewFlower();
+    // createNewFlower();
   };
 };
 

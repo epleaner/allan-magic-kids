@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-fraunces)'],
+      },
       colors: {
         purple: '#AD8FBF',
         yellow: '#FFF577',
