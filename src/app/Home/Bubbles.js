@@ -3,9 +3,7 @@
 import { NextReactP5Wrapper } from '@p5-wrapper/next';
 
 const colors = [
-  '#FFF577',
   '#FFCEC8',
-  '#F8F2DC',
   '#AD8FBF',
   '#93CACC',
   '#0092A9',
@@ -16,7 +14,6 @@ const colors = [
 const sketch = (p) => {
   let flowers = [];
   let flowfield;
-  let initialX;
   let count = 0;
 
   class Flowfield {
@@ -182,10 +179,15 @@ const sketch = (p) => {
     };
 
     show = function () {
-      p.stroke(this.color);
+      p.noStroke();
+      let color = p.color(this.color);
+      color.setAlpha(70);
+      p.fill(color);
       if (this.mode === 'circle')
         p.circle(this.center.pos.x, this.center.pos.y, this.radius);
       else {
+        p.noFill();
+        p.stroke(this.color);
         for (let i = 0; i < this.particles.length; i++) {
           this.particles[i].follow(flowfield);
           this.particles[i].update();
@@ -201,9 +203,8 @@ const sketch = (p) => {
   p.setup = () => {
     p.createCanvas(window.innerWidth, window.innerHeight);
     flowfield = new Flowfield();
-    p.noFill();
+    p.noStroke();
     p.strokeWeight(1.5);
-    initialX = 0;
     count = 0;
   };
 
@@ -232,8 +233,8 @@ const sketch = (p) => {
     const color = colors[Math.floor(Math.random() * colors.length)];
 
     flowers[flowers.length] = new Flower(
-      initialX,
-      p.map(Math.random(), 0, 1, p.height / 4, p.height),
+      p.map(Math.random(), 0, 1, -180, 180),
+      p.map(Math.random(), 0, 1, p.height + 180, p.height - 180),
       flowfield,
       color
     );
@@ -244,6 +245,6 @@ const sketch = (p) => {
   };
 };
 
-export default function HelloP5() {
+export default function Bubbles() {
   return <NextReactP5Wrapper {...{ sketch }} />;
 }
