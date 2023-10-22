@@ -2,6 +2,8 @@ import React from 'react';
 import Sketch from './Sketch';
 import p5 from 'p5';
 
+const colors = ['#FFF577', '#FFCEC8', '#F8F2DC', '#AD8FBF', '#93CACC', '#0092A9', '#5C995C', '#E08C1B'];
+
 const Bubbles = () => {
   const sketch = (p) => {
     let flowers = [];
@@ -52,8 +54,9 @@ const Bubbles = () => {
     }
 
     class Particle {
-      constructor(x, y, flowfield = new Flowfield(), touched = false, canDie = true, maxspeed = 5) {
+      constructor(x, y, flowfield = new Flowfield(), touched = false, canDie = true, maxspeed = 5, color) {
         this.id = Date.now();
+        this.color = color;
         this.pos = p.createVector(x, y);
         this.vel = p.createVector(p.map(Math.random(), 0, 1, -1, 1), p.map(Math.random(), 0, 1, -1, 1));
         this.acc = p.createVector(0, 0);
@@ -115,13 +118,14 @@ const Bubbles = () => {
     }
 
     class Flower {
-      constructor(x, y, flowfield = new Flowfield()) {
-        this.center = new Particle(x, y, flowfield, true, false);
+      constructor(x, y, flowfield = new Flowfield(), color) {
+        this.color = color;
+        this.center = new Particle(x, y, flowfield, true, false, 5, color);
         this.particles = [];
         this.stems = [];
         this.curves = [];
         this.flowfield = flowfield;
-        this.radius = 5 + p.map(Math.random(), 0, 1, 0, 45);
+        this.radius = 90 + p.map(Math.random(), 0, 1, 0, 90);
 
         this.mode = 'circle';
       }
@@ -149,6 +153,7 @@ const Bubbles = () => {
       };
 
       show = function () {
+        p.stroke(this.color);
         if (this.mode === 'circle') p.circle(this.center.pos.x, this.center.pos.y, this.radius);
         else {
           for (let i = 0; i < this.particles.length; i++) {
@@ -167,8 +172,7 @@ const Bubbles = () => {
       p.createCanvas(window.innerWidth, window.innerHeight);
       flowfield = new Flowfield();
       p.noFill();
-      p.stroke(0, 50);
-      p.strokeWeight(1);
+      p.strokeWeight(1.5);
       initialX = 0;
       count = 0;
     };
@@ -185,7 +189,7 @@ const Bubbles = () => {
 
       count++;
       if (count === 10) {
-        if (Math.random() > 0.5) createNewFlower();
+        if (Math.random() > 0.7) createNewFlower();
         count = 0;
       }
     };
@@ -195,7 +199,14 @@ const Bubbles = () => {
     };
 
     const createNewFlower = () => {
-      flowers[flowers.length] = new Flower(initialX, p.map(Math.random(), 0, 1, p.height / 4, p.height), flowfield);
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      console.log(color);
+      flowers[flowers.length] = new Flower(
+        initialX,
+        p.map(Math.random(), 0, 1, p.height / 4, p.height),
+        flowfield,
+        color,
+      );
     };
 
     p.mouseClicked = () => {
