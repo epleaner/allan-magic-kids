@@ -1,5 +1,6 @@
 import { Fraunces } from 'next/font/google';
 import './globals.css';
+import Script from 'next/script';
 
 const fraunces = Fraunces({
   weight: ['600', '700'],
@@ -15,7 +16,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={fraunces.variable}>{children}</body>
+      <body className={fraunces.variable}>
+        <main className='relative flex h-screen flex-col items-center'>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

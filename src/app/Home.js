@@ -1,5 +1,6 @@
-import Bubbles from '@/app/Home/Bubbles';
+import Bubbles from '@/app/Bubbles';
 import Section from '@/app/Section';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -19,9 +20,11 @@ export default function Home() {
         </div>
       </Section>
       <div className='absolute right-[180px] bottom-[180px] text-right pr-[60px] flex items-end justify-end z-20'>
-        <button className='font-sans flex items-center justify-center bg-blue rounded-2xl text-cream uppercase font-bold text-[32px] py-2 px-3 hover:bg-transparent hover:text-blue hover:border-blue border-2 border-transparent transition-colors'>
-          Book now
-        </button>
+        <Link href='/contact'>
+          <button className='font-sans flex items-center justify-center bg-blue rounded-2xl text-cream uppercase font-bold text-[32px] py-2 px-3 hover:bg-transparent hover:text-blue hover:border-blue border-2 border-transparent transition-colors'>
+            Book now
+          </button>
+        </Link>
       </div>
     </>
   );

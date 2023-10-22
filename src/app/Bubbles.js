@@ -15,6 +15,11 @@ const sketch = (p) => {
   let flowers = [];
   let flowfield;
   let count = 0;
+  let bgColor;
+
+  p.updateWithProps = (props) => {
+    bgColor = props.bgColor;
+  };
 
   class Flowfield {
     constructor(scale = 10) {
@@ -209,7 +214,7 @@ const sketch = (p) => {
   };
 
   p.draw = () => {
-    p.background('#F8F2DC');
+    p.background(bgColor);
 
     flowfield.update();
 
@@ -245,6 +250,6 @@ const sketch = (p) => {
   };
 };
 
-export default function Bubbles() {
-  return <NextReactP5Wrapper {...{ sketch }} />;
+export default function Bubbles({ bgColor = '#F8F2DC' }) {
+  return <NextReactP5Wrapper {...{ sketch, bgColor }} />;
 }
