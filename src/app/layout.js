@@ -11,6 +11,14 @@ const fraunces = Fraunces({
 export const metadata = {
   title: 'Magic Al',
   description: 'Delightful and memorable magic for children of all ages',
+  openGraph: {
+    title: 'Magic Al',
+    description: 'Delightful and memorable magic for children of all ages',
+    url: 'https://nextjs.org',
+    siteName: 'Magic Al',
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({ children }) {
