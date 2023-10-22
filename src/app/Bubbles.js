@@ -1,8 +1,17 @@
 import React from 'react';
-import Sketch from './Sketch';
+import Sketch from '../../old/src/components/Sketch';
 import p5 from 'p5';
 
-const colors = ['#FFF577', '#FFCEC8', '#F8F2DC', '#AD8FBF', '#93CACC', '#0092A9', '#5C995C', '#E08C1B'];
+const colors = [
+  '#FFF577',
+  '#FFCEC8',
+  '#F8F2DC',
+  '#AD8FBF',
+  '#93CACC',
+  '#0092A9',
+  '#5C995C',
+  '#E08C1B',
+];
 
 const Bubbles = () => {
   const sketch = (p) => {
@@ -28,7 +37,9 @@ const Bubbles = () => {
         for (let y = 0; y < this.rows; y++) {
           for (let x = 0; x < this.cols; x++) {
             let index = x + y * this.cols;
-            let angle = -p.noise(x * this.inc, y * this.inc, this.zoff) * (p.TWO_PI / 3 / 2);
+            let angle =
+              -p.noise(x * this.inc, y * this.inc, this.zoff) *
+              (p.TWO_PI / 3 / 2);
             let v = p5.Vector.fromAngle(angle);
             v.setMag(1);
             flowfield[index] = v;
@@ -54,11 +65,22 @@ const Bubbles = () => {
     }
 
     class Particle {
-      constructor(x, y, flowfield = new Flowfield(), touched = false, canDie = true, maxspeed = 5, color) {
+      constructor(
+        x,
+        y,
+        flowfield = new Flowfield(),
+        touched = false,
+        canDie = true,
+        maxspeed = 5,
+        color
+      ) {
         this.id = Date.now();
         this.color = color;
         this.pos = p.createVector(x, y);
-        this.vel = p.createVector(p.map(Math.random(), 0, 1, -1, 1), p.map(Math.random(), 0, 1, -1, 1));
+        this.vel = p.createVector(
+          p.map(Math.random(), 0, 1, -1, 1),
+          p.map(Math.random(), 0, 1, -1, 1)
+        );
         this.acc = p.createVector(0, 0);
         this.maxspeed = Math.random() * maxspeed + 1;
         this.flowfield = flowfield;
@@ -147,14 +169,23 @@ const Bubbles = () => {
             const theta = Math.random() * 2 * p.PI;
             let x = this.center.pos.x + (this.radius / 2) * p.cos(theta);
             let y = this.center.pos.y + (this.radius / 2) * p.sin(theta);
-            this.particles[this.particles.length] = new Particle(x, y, flowfield, true, true, 5, this.color);
+            this.particles[this.particles.length] = new Particle(
+              x,
+              y,
+              flowfield,
+              true,
+              true,
+              5,
+              this.color
+            );
           }
         }
       };
 
       show = function () {
         p.stroke(this.color);
-        if (this.mode === 'circle') p.circle(this.center.pos.x, this.center.pos.y, this.radius);
+        if (this.mode === 'circle')
+          p.circle(this.center.pos.x, this.center.pos.y, this.radius);
         else {
           for (let i = 0; i < this.particles.length; i++) {
             this.particles[i].follow(flowfield);
@@ -205,7 +236,7 @@ const Bubbles = () => {
         initialX,
         p.map(Math.random(), 0, 1, p.height / 4, p.height),
         flowfield,
-        color,
+        color
       );
     };
 
