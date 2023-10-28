@@ -1,14 +1,21 @@
+'use client';
 import Bubbles from '@/app/Bubbles';
 import Footer from '@/app/Footer';
 import Section from '@/app/Section';
 import Image from 'next/image';
 import Link from 'next/link';
+import usePageTransition from '../../hooks/usePageTransition.js';
 
 export default function Contact() {
+  const { go, setGo, transitionComponent } = usePageTransition({
+    href: '/',
+    bgColor: '#F8F2DC',
+  });
+
   return (
     <>
       <div className='block max-sm:hidden absolute'>
-        <Bubbles />
+        <Bubbles bgColor='#F8F2DC' />
       </div>
       <Section>
         <div className='font-semibold flex flex-col max-sm:gap-[30px] gap-[60px]'>
@@ -37,18 +44,19 @@ export default function Contact() {
         </div>
       </Section>
       <div className='max-sm:block hidden'>
-        <Footer href='/' label='Home' />
+        <Footer href='/' label='Home' bgColor='#F8F2DC' />
       </div>
       <div className='max-sm:hidden absolute right-[180px] bottom-[120px] text-right pr-[60px] flex items-end justify-end z-20'>
-        <Link href='/'>
-          <Image
-            src='/logo.png'
-            alt='Logo: A cartoon rabbit in purple overalls sitting on the words Magic Al'
-            width={260}
-            height={260}
-          />
-        </Link>
+        <Image
+          className='cursor-pointer rounded-full'
+          src='/logo.png'
+          alt='Logo: A cartoon rabbit in purple overalls sitting on the words Magic Al'
+          width={260}
+          height={260}
+          onClick={() => setGo(true)}
+        />
       </div>
+      {transitionComponent}
     </>
   );
 }

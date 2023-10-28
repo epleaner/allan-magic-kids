@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <div className='absolute max-sm:hidden'>
-        <Bubbles />
+        <Bubbles bgColor='#F8F2DC' />
       </div>
       <Section>
         <div className='max-sm:text-[36px] text-5xl font-semibold text-cyan'>
@@ -19,7 +19,7 @@ export default function Home() {
           for children of all ages
         </div>
       </Section>
-      <Footer href='/contact' label='Book now' />
+      <Footer bgColor='#F8F2DC' href='/contact' label='Book now' />
     </>
   );
 }
