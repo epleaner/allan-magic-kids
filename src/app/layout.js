@@ -24,11 +24,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={fraunces.variable}>
-        <main className='relative flex h-screen flex-col items-center'>
-          {children}
-        </main>
-      </body>
+      <body className={fraunces.variable}>{children}</body>
     </html>
   );
 }

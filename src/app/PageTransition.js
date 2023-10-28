@@ -20,7 +20,7 @@ const sketch = (p) => {
 
     update() {
       this.r += this.s;
-      if (this.r > (window.innerWidth + window.innerHeight) / 2) {
+      if (this.r > (window.innerWidth + window.innerHeight) / 2.7) {
         go = false;
         onDone();
       }

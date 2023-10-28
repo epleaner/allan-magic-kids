@@ -5,6 +5,7 @@ import Section from '@/app/Section';
 import Image from 'next/image';
 import Link from 'next/link';
 import usePageTransition from '../../hooks/usePageTransition.js';
+import Animate from '@/app/Animate';
 
 export default function Contact() {
   const { go, setGo, transitionComponent } = usePageTransition({
@@ -13,7 +14,7 @@ export default function Contact() {
   });
 
   return (
-    <>
+    <Animate>
       <div className='block max-sm:hidden absolute'>
         <Bubbles bgColor='#F8F2DC' />
       </div>
@@ -57,6 +58,6 @@ export default function Contact() {
         />
       </div>
       {transitionComponent}
-    </>
+    </Animate>
   );
 }
