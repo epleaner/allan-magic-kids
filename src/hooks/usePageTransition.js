@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function usePageTransitionOut({ href, bgColor }) {
+export default function usePageTransition({ href, bgColor }) {
   const [go, setGo] = useState(false);
 
   const router = useRouter();

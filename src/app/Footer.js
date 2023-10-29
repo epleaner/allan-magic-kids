@@ -2,12 +2,12 @@
 import Image from 'next/image';
 import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import usePageTransitionOut from '../hooks/usePageTransitionOut.js';
+import usePageTransition from '../hooks/usePageTransition.js';
 import { motion } from 'framer-motion';
 import { itemVariants } from '@/app/Animate';
 
 export default function Footer({ href, label, bgColor }) {
-  const { go, setGo, transitionComponent } = usePageTransitionOut({
+  const { go, setGo, transitionComponent } = usePageTransition({
     href,
     bgColor,
   });
