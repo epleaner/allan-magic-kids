@@ -4,12 +4,12 @@ import Footer from '@/app/Footer';
 import Section from '@/app/Section';
 import Image from 'next/image';
 import Link from 'next/link';
-import usePageTransition from '../../hooks/usePageTransition.js';
+import usePageTransitionOut from '../../hooks/usePageTransitionOut.js';
 import Animate, { itemVariants } from '@/app/Animate';
 import { motion } from 'framer-motion';
 
 export default function Contact() {
-  const { go, setGo, transitionComponent } = usePageTransition({
+  const { go, setGo, transitionComponent } = usePageTransitionOut({
     href: '/',
     bgColor: '#F8F2DC',
   });

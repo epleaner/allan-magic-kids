@@ -1,10 +1,10 @@
 'use client';
-import PageTransition from '@/app/PageTransition';
+import PageTransitionOut from '@/app/PageTransitionOut';
 import Image from 'next/image';
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function usePageTransition({ href, bgColor }) {
+export default function usePageTransitionOut({ href, bgColor }) {
   const [go, setGo] = useState(false);
 
   const router = useRouter();
@@ -21,14 +21,14 @@ export default function usePageTransition({ href, bgColor }) {
         height: '100%',
         zIndex: go ? 100 : 0,
       }}>
-      <PageTransition {...{ go, onDone, bgColor }} />
+      <PageTransitionOut {...{ go, onDone, bgColor }} />
     </div>
   );
 
   return { go, setGo, transitionComponent };
 }
 
-export function PageTransitionWrapper({ go, children }) {
+export function PageTransitionOutWrapper({ go, children }) {
   return (
     <div className={`fixed w-screen h-screen ${go ? 'z-[100]' : ''}`}>
       {children}

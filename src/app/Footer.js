@@ -1,14 +1,13 @@
 'use client';
-import PageTransition from '@/app/PageTransition';
 import Image from 'next/image';
 import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import usePageTransition from '../hooks/usePageTransition.js';
+import usePageTransitionOut from '../hooks/usePageTransitionOut.js';
 import { motion } from 'framer-motion';
 import { itemVariants } from '@/app/Animate';
 
 export default function Footer({ href, label, bgColor }) {
-  const { go, setGo, transitionComponent } = usePageTransition({
+  const { go, setGo, transitionComponent } = usePageTransitionOut({
     href,
     bgColor,
   });
