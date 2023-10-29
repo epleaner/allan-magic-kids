@@ -13,14 +13,25 @@ export default function usePageTransition({ href, bgColor }) {
 
   const onDone = useCallback(() => router.push(href), [href, router]);
 
-  const transitionComponent = useMemo(
-    () => (
-      <div className={`fixed w-screen h-screen ${go && 'z-[100]'}`}>
-        <PageTransition {...{ go, onDone, bgColor }} />
-      </div>
-    ),
-    [bgColor, go, onDone]
+  const transitionComponent = (
+    <div
+      style={{
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        zIndex: go ? 100 : 0,
+      }}>
+      <PageTransition {...{ go, onDone, bgColor }} />
+    </div>
   );
 
   return { go, setGo, transitionComponent };
+}
+
+export function PageTransitionWrapper({ go, children }) {
+  return (
+    <div className={`fixed w-screen h-screen ${go ? 'z-[100]' : ''}`}>
+      {children}
+    </div>
+  );
 }
