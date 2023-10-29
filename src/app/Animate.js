@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 
 const variants = {
-  visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+  visible: { opacity: 1 },
   hidden: { opacity: 0 },
 };
 
