@@ -3,13 +3,12 @@ import Bubbles from '@/app/Bubbles';
 import Footer from '@/app/Footer';
 import Section from '@/app/Section';
 import Image from 'next/image';
-import Link from 'next/link';
 import usePageTransition from '../../hooks/usePageTransition.js';
 import Animate, { itemVariants } from '@/app/Animate';
 import { motion } from 'framer-motion';
 
 export default function Contact() {
-  const { go, setGo, transitionComponent } = usePageTransition({
+  const { setGo, transitionComponent } = usePageTransition({
     href: '/',
     bgColor: '#F8F2DC',
   });
@@ -55,22 +54,8 @@ export default function Contact() {
           </motion.span>
         </div>
       </Section>
-      <motion.div variants={itemVariants} className='max-sm:block hidden'>
-        <Footer href='/' label='Home' bgColor='#F8F2DC' />
-      </motion.div>
-      <motion.div
-        variants={itemVariants}
-        className='max-sm:hidden absolute right-[180px] bottom-[120px] text-right pr-[60px] flex items-end justify-end z-20'>
-        <Image
-          className='cursor-pointer rounded-full'
-          src='/logo.png'
-          alt='Logo: A cartoon rabbit in purple overalls sitting on the words Magic Al'
-          width={260}
-          height={260}
-          onClick={() => setGo(true)}
-        />
-      </motion.div>
-      {transitionComponent}
+
+      <Footer href='/' label='Home' bgColor='#F8F2DC' />
     </Animate>
   );
 }
